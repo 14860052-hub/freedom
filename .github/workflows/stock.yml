@@ -27,8 +27,8 @@ jobs:
             python stock_bot.py
           
           # 嘗試 bot 資料夾
-          elif [ -f "bot/stock_bot.py" ]; then
-            python bot/stock_bot.py
+          elif [ -f "bot/歡迎使用_colab.py" ]; then
+            python bot/歡迎使用_colab.py
           
           # 找不到直接報錯（但會顯示結構）
           else
