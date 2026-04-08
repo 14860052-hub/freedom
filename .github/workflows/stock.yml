@@ -23,4 +23,7 @@ jobs:
       - name: Run script
         run: python stock.py
       - name: List files
-        run: ls -l
+        run: ls -R
+      - name: Run stock bot
+        working-directory: ${{ github.workspace }}
+        run: python stock_bot.py
