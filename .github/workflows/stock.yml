@@ -4,12 +4,12 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:  # 可手動觸發
-  schedule:           # 每天定時抓股價（UTC 時區）
-    - cron: "0 1 * * *"  # 每天 09:00 台北時間 (UTC+8 → 01:00 UTC)
+  workflow_dispatch:
+  schedule:
+    - cron: "0 1 * * *"
 
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # 避免 Node.js 20 警告
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
@@ -18,30 +18,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # 確保抓完整 repo
+          fetch-depth: 0
 
-      # 2️⃣ Debug: 列出檔案，確認 stock_bot.py 在哪裡
-      - name: List files
-        run: ls -R
+      - name: Show current directory and files
+        run: |
+          pwd
+          ls -l
+          ls -R
 
-      # 3️⃣ 安裝 Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      # 4️⃣ 安裝需求套件（如果有 requirements.txt）
       - name: Install dependencies
         if: ${{ exists('requirements.txt') }}
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # 5️⃣ 執行 stock_bot.py
       - name: Run stock bot
-        working-directory: ${{ github.workspace }}
-        run: python stock_bot.py
+        run: python ${{ github.workspace }}/stock_bot.py
