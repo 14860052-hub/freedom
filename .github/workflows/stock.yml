@@ -23,15 +23,15 @@ jobs:
       - name: Run bot
         run: |
           # 嘗試根目錄
-          if [ -f "歡迎使用_colab.py" ]; then
-            python 歡迎使用_colab.py
+          if [ -f "stock_bot.py" ]; then
+            python stock_bot.py
           
           # 嘗試 bot 資料夾
-          elif [ -f "bot/歡迎使用_colab.py" ]; then
-            python bot/歡迎使用_colab.py
+          elif [ -f "bot/stock_bot.py" ]; then
+            python bot/stock_bot.py
           
           # 找不到直接報錯（但會顯示結構）
           else
-            echo "❌ 找不到 歡迎使用_colab.py"
+            echo "❌ 找不到 stock_bot.py"
             exit 1
           fi
