@@ -21,7 +21,7 @@ def get_stock():
 
 def send_telegram(msg):
     token = "8626477915:AAGEU02yGBrSCFt1m6XDwoiFcYJhFAuXhtw"
-    chat_id = "8690767707"
+    chat_id = "551998428"
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
 
