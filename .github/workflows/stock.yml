@@ -19,3 +19,5 @@ jobs:
 
       - name: Run bot
         run: python stock_bot.py
+      - name: Show files
+        run: ls -R
