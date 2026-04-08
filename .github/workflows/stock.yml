@@ -22,3 +22,5 @@ jobs:
 
       - name: Run script
         run: python stock.py
+      - name: List files
+        run: ls -l
